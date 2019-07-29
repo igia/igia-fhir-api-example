@@ -1,0 +1,18 @@
+[
+	{
+		"id": "12345",
+		"mrn": "test12345",
+		"first": "John",
+		"last": "Smith",
+		"gender": "male",
+		"birthdate": "2000-10-10"
+	},
+	{
+		"id": "67890",
+		"mrn": "test67890",
+		"first": "Jane",
+		"last": "Smith",
+		"gender": "female",
+		"birthdate": "1979-11-11"
+	}
+]

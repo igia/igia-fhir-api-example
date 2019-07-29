@@ -1,0 +1,21 @@
+{
+	"priority": 1,
+    "request": {
+        "method": "GET",
+        "url": "/wiremock/patients/67890"
+    },
+    "response": {
+        "status": 200,
+        "jsonBody": {
+        	"id": "67890",
+        	"mrn": "test67890",
+        	"first": "Jane",
+        	"last": "Smith",
+        	"gender": "female",
+        	"birthdate": "1979-11-11"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+    }
+}

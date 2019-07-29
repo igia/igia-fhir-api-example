@@ -1,0 +1,95 @@
+#
+# This Source Code Form is subject to the terms of the Mozilla Public License, v.
+# 2.0 with a Healthcare Disclaimer.
+# A copy of the Mozilla Public License, v. 2.0 with the Healthcare Disclaimer can
+# be found under the top level directory, named LICENSE.
+# If a copy of the MPL was not distributed with this file, You can obtain one at
+# http://mozilla.org/MPL/2.0/.
+# If a copy of the Healthcare Disclaimer was not distributed with this file, You
+# can obtain one at the project website https://github.com/igia.
+#
+# Copyright (C) 2018-2019 Persistent Systems, Inc.
+#
+
+security:
+    oauth2:
+        client:
+            access-token-uri: http://localhost:9080/auth/realms/master/protocol/openid-connect/token
+            user-authorization-uri: http://localhost:9080/auth/realms/master/protocol/openid-connect/auth
+            client-id: igiafhirapiexample
+            client-secret: 67435aa2-d243-461c-b340-2496518c2271
+            scope: openid profile email
+        resource:
+            user-info-uri: http://localhost:9080/auth/realms/master/protocol/openid-connect/userinfo
+            token-info-uri: http://localhost:9080/auth/realms/master/protocol/openid-connect/token/introspect
+            prefer-token-info: false
+            jwk:
+              key-set-uri: http://localhost:9080/auth/realms/master/protocol/openid-connect/certs    
+
+# ===================================================================
+# Application specific properties
+# Add your own application properties here, see the ApplicationProperties class
+# to have type-safe configuration, like in the JHipsterProperties above
+#
+# More documentation is available at:
+# https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+application:
+  demographics_url: http://localhost:8088/wiremock/patients    
+
+hapi:
+  fhir:
+    version: dstu3
+    server:
+      path: /api
+    rest:
+      server-name: igiafhirapiexample
+      server-version: 0.0.1
+      implementation-description: igia Example FHIR Server
+      default-response-encoding: json
+      e-tag-support: enabled
+      default-pretty-print: true
+      exception.stacktrace: true
+    validation:
+      enabled: true
+      request-only: true
+      
+hspc:
+  platform:
+    api:
+      security:
+        # determines if security is applied at the contextPath
+        mode: secured
+#        mode: mock
+#        mode: open
+      oauth2:
+        clientId: hspc_resource_server
+        clientSecret: secret
+        scopes: openid,offline_access,launch,smart/orchestrate_launch
+    # these values are used for internal calls to the auth server
+    authorization:
+      protocol: http #https
+      host: ${AUTH_HOST:localhost}
+      port: ${AUTH_PORT:8080}
+      context: ~
+      url: ${hspc.platform.authorization.protocol}://${hspc.platform.authorization.host}:${hspc.platform.authorization.port}${hspc.platform.authorization.context}
+      authorizeUrlPath: /auth/realms/master/protocol/openid-connect/auth
+      tokenUrlPath: /auth/realms/master/protocol/smart-openid-connect/token
+      tokenCheckUrlPath: /auth/realms/master/protocol/openid-connect/token/introspect
+      userinfoUrlPath: /auth/realms/master/protocol/openid-connect/userinfo
+      smart:
+        launchUrlPath: #required by library but not implemented in auth server
+        registrationEndpointUrlPath: /auth/realms/master/clients-registrations/openid-connect
+        urisEndpointExtensionUrl: http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris
+        launchRegistrationUrl: #required by library but not implemented in auth server
+        capabilities: launch-standalone, client-public, client-confidential-symmetric, sso-openid-connect, context-standalone-patient, permission-patient, permission-offline
+    # the manifest output should contain these values (used to allow the API to publish different auth URL than it resolves locally, ie, Docker container)
+    manifest:
+      override: ${MANIFEST_OVERRIDE:false}
+      protocol: http
+      host: ${PUBLISHED_AUTH_HOST:}
+      port: ${PUBLISHED_AUTH_PORT:}
+      context: ~
+      url: ${hspc.platform.manifest.protocol}://${hspc.platform.manifest.host}:${hspc.platform.manifest.port}${hspc.platform.manifest.context}
+       

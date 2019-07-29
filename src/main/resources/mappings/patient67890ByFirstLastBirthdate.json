@@ -1,0 +1,14 @@
+{
+	"priority": 1,
+    "request": {
+        "method": "GET",
+        "url": "/wiremock/patients?first=Jane&last=Smith&birthdate=1979-11-11"
+    },
+    "response": {
+        "status": 200,
+        "bodyFileName": "patientSearch67890.json",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+    }
+}

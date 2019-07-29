@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "io.igia.example.fhir",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "5.4.2",
+    "applicationType": "microservice",
+    "baseName": "igiafhirapiexample",
+    "packageName": "io.igia.example.fhir",
+    "packageFolder": "io/igia/example/fhir",
+    "serverPort": "8081",
+    "authenticationType": "oauth2",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NjUyZDg1NTA2YTQ1Mzc0NTUwMjExZTA4YmQyYzQ5ZmUyYjhmZjNjMjQ2YWNhMGM5MjJlMTAwYTIxMDc2YTkwZGVjNzgwOGMwNDA1MmE3ZjI0MjIyMzg3ODZmMWIzNGFlZGI4ZGEyMWNkNjYyNTEwOWE2MGM0MTJmODk1NzNlNTc=",
+    "enableTranslation": true,
+    "languages": [
+      "en"
+    ],
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

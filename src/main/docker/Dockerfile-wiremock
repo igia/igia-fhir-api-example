@@ -1,0 +1,20 @@
+FROM openjdk:8-jre-alpine
+
+ENV WIREMOCK_VERSION 2.17.0
+
+RUN apk add --update --no-cache curl
+
+# Allow root group the access on directory (needed for OpenShift, if you are writing to a file) 
+RUN mkdir -p /home/wiremock && \
+    chgrp -R 0 /home/wiremock && \
+    chmod -R g=u /home/wiremock && \
+    curl -sSL https://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/${WIREMOCK_VERSION}/wiremock-standalone-${WIREMOCK_VERSION}.jar -o /home/wiremock/wiremock-standalone.jar
+
+# Copy mapping and outputs 
+COPY main/resources/__files /home/wiremock/__files
+COPY main/resources/mappings /home/wiremock/mappings
+
+WORKDIR /home/wiremock
+EXPOSE 8080 8443
+
+ENTRYPOINT ["java","-jar","wiremock-standalone.jar"]

@@ -18,7 +18,7 @@
 
     <groupId>io.igia</groupId>
     <artifactId>igia-fhir-api-example</artifactId>
-    <version>0.3.2</version>
+    <version>0.3.3</version>
     <packaging>war</packaging>
     <name>igia-fhir-api-example</name>
 
@@ -29,7 +29,7 @@
     <!-- jhipster-needle-distribution-management -->
 
     <properties>
-    	<igia.fhir.version>0.3.2</igia.fhir.version>
+    	<igia.fhir.version>0.3.3</igia.fhir.version>
     	<camel.version>2.23.0</camel.version>
     	    
         <!-- Build properties -->
